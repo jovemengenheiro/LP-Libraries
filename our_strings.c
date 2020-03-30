@@ -14,7 +14,7 @@
 
 #include "our_strings.h"
 
-const int max_line_length = 10000;
+int max_line_length = 10000;
 
 int str_count_while(const char *s, char x)
 {
@@ -303,3 +303,23 @@ int strings_unique(const char **a, int n, const char **b)
   }
   return result;
 }
+
+// Handling CSV files
+
+char csv_separator = ',';
+
+int strings_from_csv(const char *s, const char **a)
+{
+  int result = 0;
+  int x = str_count_while_not(s, csv_separator);
+  a[result++] = str_ndup(s, x);
+  int i = x;
+  while (s[i++] == csv_separator)
+  {
+    int x = str_count_while_not(s+i, csv_separator);
+    a[result++] = str_ndup(s+i, x);
+    i += x;
+  }
+  return result;
+}
+

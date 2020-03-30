@@ -8,7 +8,8 @@
 #ifndef our_strings_h
 #define our_strings_h
 
-const int max_line_length;
+extern int max_line_length;
+extern char csv_separator;
 
 int str_count_while(const char *s, char x);
 int str_count_while_not(const char *s, char x);
@@ -51,5 +52,7 @@ int strings_groups(const char **a, int n, int *b);
 int strings_unique(const char **a, int n, const char **b);
 
 int strings_copy(const char **a, int n, const char **b);
+
+int strings_from_csv(const char *s, const char **a);
 
 #endif
